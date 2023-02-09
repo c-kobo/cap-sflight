@@ -42,6 +42,12 @@ annotate TravelService.Travel with @UI : {
     { $Type  : 'UI.DataFieldForAction', Action : 'TravelService.rejectTravel',   Label  : '{i18n>RejectTravel}'   },
     { $Type  : 'UI.DataFieldForAction', Action : 'TravelService.deductDiscount', Label  : '{i18n>DeductDiscount}' },
     {
+      $Type : 'UI.DataFieldForAction',
+      Label : 'Testing unbound',
+      Action: 'TravelService.EntityContainer/testing',
+      Inline: false
+    },    
+    {
       Value : TravelID,
       @UI.Importance : #High
     },

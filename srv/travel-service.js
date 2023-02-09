@@ -167,7 +167,21 @@ init() {
   //
   // Action Implementations...
   //
-
+  this.on("testing", async (req, next) => {
+    let subject = {'ref':[{'id':'TravelService.Travel','where':[{'ref':['TravelUUID']},'=',{'val':'75757221A8E4645C17002DF03754AB66'}]}]};
+      await UPDATE (subject)
+      .where `TravelStatus_code != 'A'`
+      .and `BookingFee is not null`
+      .with (`
+        TotalPrice = round (TotalPrice - BookingFee, 3)
+      `)   
+      //req.info(204, 'Action processed');
+      await next();
+      // let TravelUUID = '75757221A8E4645C17002DF03754AB66',
+      // IsActiveEntity = true
+      // return this.read(Travel, { TravelUUID, IsActiveEntity })
+      
+    });
   this.on ('acceptTravel', req => UPDATE (req.subject) .with ({TravelStatus_code:'A'}))
   this.on ('rejectTravel', req => UPDATE (req.subject) .with ({TravelStatus_code:'X'}))
   this.on ('deductDiscount', async req => {
