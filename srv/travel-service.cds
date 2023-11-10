@@ -2,12 +2,12 @@ using { sap.fe.cap.travel as my } from '../db/schema';
 
 service TravelService @(path:'/processor') {
 
-@(
-    Common.SideEffects              : {
-        TargetEntities : ['/TravelService.EntityContainer/Travel']
-    }
-)
-@Core.OperationAvailable: false
+// @(
+//     Common.SideEffects              : {
+//         TargetEntities : ['/TravelService.EntityContainer/Travel']
+//     }
+// )
+// @Core.OperationAvailable: false
 action testing();
 
   @(restrict: [
@@ -26,12 +26,3 @@ action testing();
 }
 
 type Percentage : Integer @assert.range: [1,100];
-
-// annotate TravelService.EntityContainer
-// actions {
-//   testing @(
-//     Common.SideEffects              : {
-//         TargetEntities : ['/TravelService.EntityContainer/Travel']
-//     }
-// );
-// }

@@ -15,12 +15,22 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "processor/",
+        "uri": "/processor/",
         "type": "OData",
         "settings": {
-          "odataVersion": "4.0"
+          "odataVersion": "4.0",
+          "annotations": [
+            "annotations"
+        ]          
         }
-      }
+      },
+      "annotations": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotations.xml",
+        "settings": {
+            "localUri": "annotations/annotations.xml"
+        }
+      } 
     },
     "offline": false,
     "resources": "resources.json",

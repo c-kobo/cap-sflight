@@ -14,18 +14,6 @@ annotate TravelService.Travel with @(Common.SideEffects: {
   to_Agency   @Common.FieldControl  : TravelStatus.fieldControl;
   to_Customer @Common.FieldControl  : TravelStatus.fieldControl;
 
-} actions {
-  rejectTravel @(
-    Core.OperationAvailable : { $edmJson: { $Ne: [{ $Path: 'in/TravelStatus_code'}, 'X']}},
-    Common.SideEffects.TargetProperties : ['in/TravelStatus_code'],
-  );
-  acceptTravel @(
-    Core.OperationAvailable : { $edmJson: { $Ne: [{ $Path: 'in/TravelStatus_code'}, 'A']}},
-    Common.SideEffects.TargetProperties : ['in/TravelStatus_code'],
-  );
-  deductDiscount @(
-    Core.OperationAvailable : { $edmJson: { $Eq: [{ $Path: 'in/TravelStatus_code'}, 'O']}}
-  );
 }
 
 annotate TravelService.Travel @(
