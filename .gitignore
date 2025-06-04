@@ -32,7 +32,7 @@ srv/src/main/resources/edmx/**
 dist/
 /app/resources/
 /app/router/package-lock.json
-
+/app/travel_processor/webapp/lib/
 
 # IDEs
 .idea

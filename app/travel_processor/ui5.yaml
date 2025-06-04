@@ -33,7 +33,12 @@ server:
       configuration:
         baseUri: http://localhost:4004/processor
         username: admin # dummy credentials for local testing
-        password: admin # dummy credentials for local testing
+        password: admin # dummy credentials for local testing        
+    - name: ui5-middleware-simpleproxy
+      mountPath: /sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001
+      afterMiddleware: compression
+      configuration:
+        baseUri: http://localhost:4005/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001
     - name: fiori-tools-appreload
       afterMiddleware: compression
     - name: ui5-tooling-transpile-middleware
