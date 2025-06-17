@@ -63,28 +63,12 @@ modules:
           artifacts:
             - travel-processor.zip
           target-path: app/
-        - name: sflight-app-travel-analytics
-          artifacts:
-            - travel-analytics.zip
-          target-path: app/
 
   # ------------- APPLICATION: TRAVEL PROCESSOR ----------------
   - name: sflight-app-travel-processor
   # ------------------------------------------------------------
     type: html5
     path: app/travel_processor
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm run build
-      supported-platforms: []
-
-  # ------------- APPLICATION: TRAVEL ANALYTICS ----------------
-  - name: sflight-app-travel-analytics
-  # ------------------------------------------------------------
-    type: html5
-    path: app/travel_analytics
     build-parameters:
       build-result: dist
       builder: custom
@@ -200,4 +184,9 @@ resources:
                 ProxyType: Internet
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
-
+              - Name: fioriai-proxy-srv
+                URL: https://cnssandbox-ux-fnd-ai-playground-fioriai-fioriai-proxy-srv.cfapps.eu12.hana.ondemand.com
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
