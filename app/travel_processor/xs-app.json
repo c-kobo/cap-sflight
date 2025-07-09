@@ -10,10 +10,17 @@
       "csrfProtection": false
     },
     {
-      "source": "^/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/(.*)$",
-      "target": "/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/$1",
+      "source": "^(/[^/]+)?/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/(.*)$",
+      "target": "$1/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/$2",
       "destination": "fioriai-proxy-srv",
-      "csrfProtection": true
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^(/[^/]+)?/resources/sap/fe/core/services/EnvironmentServiceFactory(.*)$",
+      "target": "$1/resources/sap/fe/core/services/EnvironmentServiceFactory$2",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
     },
     {
       "source": "^(.*)$",
