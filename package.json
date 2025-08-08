@@ -16,13 +16,15 @@
     "test:mocha": "npx -y mocha",
     "travel-processor": "cds watch --open sap.fe.cap.travel/index.html?sap-ui-xx-viewCache=false",
     "travel-analytics": "cds watch --open sap.fe.cap.travel_analytics/index.html?sap-ui-xx-viewCache=false",
-    "travel-serve": "concurrently --names \"CAP,UI5\" --prefix name \"cds watch\" \"cd app/travel_processor && npx ui5 serve\"",
+    "travel-serve": "concurrently --names \"CAP,UI5\" --prefix name \"cds bind -2 aicore && cds-tsx watch --profile hybrid\" \"cd app/travel_processor && npx ui5 serve\"",
     "fetch:fioriaireuselib": "mvn-install"
   },
   "dependencies": {
     "@cap-js/hana": ">=1",
     "@sap/cds": ">=8.4.0",
     "@sap/xssec": "^4",
+    "@sap-ai-sdk/orchestration": "^1.13.0",
+    "@sap-ai-sdk/prompt-registry": "^1.15.0",    
     "express": "^4"
   },
   "devDependencies": {

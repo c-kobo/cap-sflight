@@ -38,7 +38,7 @@ server:
       mountPath: /sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001
       afterMiddleware: compression
       configuration:
-        baseUri: http://localhost:4005/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001
+        baseUri: http://localhost:4004/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001
     - name: fiori-tools-appreload
       afterMiddleware: compression
     - name: ui5-tooling-transpile-middleware
