@@ -7,7 +7,7 @@ let PromptTemplatesApi;
 })();
 
 // AI Prompt Service for summarization
-export class v0001 extends cds.ApplicationService { 
+module.exports = class extends cds.ApplicationService {
   init() {
     const scenarioId = "AIU_SUMMARIZATION";
 
