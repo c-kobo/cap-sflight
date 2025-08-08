@@ -1,0 +1,1 @@
+{"version":3,"file":"log.js","names":["__exports","Log","getLogger"],"sources":["log.ts"],"sourcesContent":["import Log from \"sap/base/Log\";\n\n/**\n * Logger for the Fiori AI reuse library.\n */\nexport default Log.getLogger(\"ux.eng.fioriai.reuse\");\n"],"mappings":"qEAEA,IAAAA,EAGeC,EAAIC,UAAU,wBAAuB,OAAAF,CAAA","ignoreList":[]}

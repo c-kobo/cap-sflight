@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/easyfill/ProcessFieldExtraction","ux/eng/fioriai/reuse/languagemodel/ODataCompletion"],function(e,t){"use strict";const i=e["processFieldExtraction"];const n=t["createODataCompletionFunction"];const o=n("EasyFill");async function r(e,t){return i(o,e,t)}var s={__esModule:true};s.extractFieldValuesFromText=r;return s});
+//# sourceMappingURL=EasyFill.js.map

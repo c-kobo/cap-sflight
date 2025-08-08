@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>ux.eng.fioriai.reuse</name>
+    <vendor>SAP SE</vendor>
+    <version>${project.version}</version>
+    <copyright>${copyright}</copyright>
+    <title>{{TITLE}}</title>
+    <documentation>{{DESCRIPTION}}</documentation>
+
+    <dependencies>
+        <dependency>
+            <libraryName>sap.ui.core</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.m</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.richtexteditor</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.suite.ui.commons</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+    </dependencies>
+</library>

@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/common/format","ux/eng/fioriai/reuse/common/result"],function(r,e){"use strict";const t=r["extractFromMarkdown"];const n=e["error"];const s=e["success"];function c(r){try{return s(JSON.parse(r))}catch{return n(`Failed to parse JSON: ${r}`)}}async function o(r,e){const n=t(r);const s=c(n);if(!s.success){return s}return e(s.data)}var u={__esModule:true};u.parseAndValidate=o;return u});
+//# sourceMappingURL=JsonValidator.js.map

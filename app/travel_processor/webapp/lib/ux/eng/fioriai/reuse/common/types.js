@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";const e="sap.ui.model.odata.v2.ODataModel";const t="sap.ui.model.odata.v4.ODataModel";var a={__esModule:true};a.v2Model=e;a.v4Model=t;return a});
+//# sourceMappingURL=types.js.map

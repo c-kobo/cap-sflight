@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["./library","./summary/types"],function(e,r){"use strict";var t={__esModule:true};t.summarize=e.summarize;function u(e,r){r&&Object.keys(r).forEach(function(t){if(t==="default"||t==="__esModule")return;Object.defineProperty(e,t,{enumerable:true,get:function e(){return r[t]}})})}u(t,r);return t});
+//# sourceMappingURL=index-dbg.js.map

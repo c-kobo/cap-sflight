@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/common/result"],function(s){"use strict";const e=s["error"];const r=s["success"];function t(s){return async function t(n){const i=await s.safeParseAsync(n);if(!i.success){return e(i.error.issues.map(({path:s,message:e})=>{const r=s.map(s=>`[${JSON.stringify(s)}]`).join("");return`${r}: ${e}`}).join(", "))}return r(i.data)}}var n={__esModule:true};n.validateWithZodSchema=t;return n});
+//# sourceMappingURL=validator.js.map

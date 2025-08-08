@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/common/result","ux/eng/fioriai/reuse/common/util","ux/eng/fioriai/reuse/service/fioriAIAction"],function(e,i,s){"use strict";const t=e["success"];const r=i["objectToNameValueObject"];const c=s["callFioriAiAction"];async function o(e,i){const s={template:e,parameters:r(i)};const o=await c(`EasyFilter/com.sap.gateway.srvd.aiu_ui_prompt.v0001.process`,s);return o.success?t(o.data.value):o}var u={__esModule:true};u.runEasyFilterAction=o;return u});
+//# sourceMappingURL=runEasyFilterAction.js.map

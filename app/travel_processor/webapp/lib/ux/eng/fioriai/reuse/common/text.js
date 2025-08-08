@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["sap/ui/core/Lib"],function(e){"use strict";function r(){return e.getResourceBundleFor("ux.eng.fioriai.reuse")}function u(e,u){return r().getText(e,u)}var t={__esModule:true};t.getLibraryResourceBundle=r;t.getText=u;return t});
+//# sourceMappingURL=text.js.map

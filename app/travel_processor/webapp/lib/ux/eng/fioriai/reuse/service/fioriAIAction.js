@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/service/action"],function(i){"use strict";const t=i["callAction"];const u=t.bind(null,"/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/");const n=u;function o(i,u,n){return t(`/${i}`,u,n)}var r={__esModule:true};r.callFioriAiAction=n;r.callFioriAiSummarizeAction=o;return r});
+//# sourceMappingURL=fioriAIAction.js.map

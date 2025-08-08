@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";function n(n){const e=n.match(/```(?:\w+)?\n([\s\S]+)\n```/);return e?e[1]:n}function e(n,e){if(n.length===0){return""}const r=n=>n.replaceAll("|","&#124;").replaceAll("\n","<br>");return[`|${n.map(r).join("|")}|`,`|${n.map(()=>"-").join("|")}|`,...e.map(e=>`|${n.map((n,t)=>r(e[t]??"")).join("|")}|`)].join("\n")}var r={__esModule:true};r.extractFromMarkdown=n;r.generateMarkdownTable=e;return r});
+//# sourceMappingURL=format.js.map

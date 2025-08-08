@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["getTextToSummarize","___extraction.getTextToSummarize","__exports","getUi5Element","___extraction.getUi5Element"],"sources":["index.ts"],"sourcesContent":["export { getTextToSummarize, getUi5Element } from \"./extraction\";\n"],"mappings":"+FAASA,mBAAkBC,qBAAAC,EAAEC,cAAaC,gBAAA,OAAAF,CAAA","ignoreList":[]}

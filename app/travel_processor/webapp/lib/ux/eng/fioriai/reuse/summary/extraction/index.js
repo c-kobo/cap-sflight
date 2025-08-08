@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["./extraction"],function(e){"use strict";var t={__esModule:true};t.getTextToSummarize=e.getTextToSummarize;t.getUi5Element=e.getUi5Element;return t});
+//# sourceMappingURL=index.js.map

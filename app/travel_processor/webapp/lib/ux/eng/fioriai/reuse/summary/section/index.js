@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["./section"],function(e){"use strict";var t={__esModule:true};t.createSectionTree=e.createSectionTree;t.getSelectedSections=e.getSelectedSections;t.selectAllSections=e.selectAllSections;t.selectionChange=e.selectionChange;t.unstashSections=e.unstashSections;return t});
+//# sourceMappingURL=index.js.map

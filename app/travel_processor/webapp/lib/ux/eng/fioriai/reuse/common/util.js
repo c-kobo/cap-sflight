@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";function e(e){return Object.entries(e).map(([e,t])=>({name:e,value:t}))}var t={__esModule:true};t.objectToNameValueObject=e;return t});
+//# sourceMappingURL=util.js.map

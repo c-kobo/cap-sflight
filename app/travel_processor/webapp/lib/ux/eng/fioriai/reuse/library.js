@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["sap/ui/core/Lib","./summary/SmartSummary"],function(e,r){"use strict";const i=r["summarize"];e.init({name:"ux.eng.fioriai.reuse",version:"${project.version}",dependencies:["sap.ui.core","sap.m"],noLibraryCSS:false});async function s(e){return i(e)}var n={__esModule:true};n.summarize=s;return n});
+//# sourceMappingURL=library.js.map

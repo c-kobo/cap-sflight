@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["ux/eng/fioriai/reuse/common/log","ux/eng/fioriai/reuse/summary/controller/Summarization.controller"],function(e,r){"use strict";function t(e){return e&&e.__esModule&&typeof e.default!=="undefined"?e.default:e}const i=t(e);const n=t(r);const o=new n;async function u(e){i.debug(`Starting summarization of view ${e.view.getId()}`);try{await o.startSummarization(e.view)}catch(e){i.error("Error performing summarization",e)}}var a={__esModule:true};a.summarize=u;return a});
+//# sourceMappingURL=SmartSummary.js.map

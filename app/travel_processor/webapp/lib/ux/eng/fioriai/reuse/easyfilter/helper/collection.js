@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";function e(e){const t=e.entitySet?.replace(/(\w)\W+$/,"$1").replace(/^\W+/,"");return t?t:"Unknown"}var t={__esModule:true};t.getCollectionName=e;return t});
+//# sourceMappingURL=collection.js.map

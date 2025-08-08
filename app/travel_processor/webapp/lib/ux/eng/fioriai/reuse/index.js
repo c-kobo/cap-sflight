@@ -1,0 +1,2 @@
+sap.ui.define(["./library","./summary/types"],function(e,r){"use strict";var u={__esModule:true};u.summarize=e.summarize;function t(e,r){r&&Object.keys(r).forEach(function(u){if(u==="default"||u==="__esModule")return;Object.defineProperty(e,u,{enumerable:true,get:function e(){return r[u]}})})}t(u,r);return u});
+//# sourceMappingURL=index.js.map

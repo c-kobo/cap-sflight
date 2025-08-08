@@ -1,0 +1,2 @@
+"use strict";sap.ui.define(["./share"],function(a){"use strict";var e={__esModule:true};e.isShareAvailable=a.isShareAvailable;e.shareViaClipboard=a.shareViaClipboard;e.shareViaCollaborationPopover=a.shareViaCollaborationPopover;return e});
+//# sourceMappingURL=index.js.map

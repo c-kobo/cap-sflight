@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";function e(e){return{success:true,data:e}}function s(e,s){return s!==undefined?{success:false,message:e,code:s}:{success:false,message:e}}var u={__esModule:true};u.success=e;u.error=s;return u});
+//# sourceMappingURL=result.js.map

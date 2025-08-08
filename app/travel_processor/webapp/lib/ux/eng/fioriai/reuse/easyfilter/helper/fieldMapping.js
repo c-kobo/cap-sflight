@@ -1,0 +1,2 @@
+"use strict";sap.ui.define([],function(){"use strict";function e(e,i){const n={};const s={};for(const r of e.fields){const u=t(r.name,e.entitySet);n[u]=i(r);s[u]=r.name}return{fieldsByKey:n,originalFieldNames:s}}function t(e,t){if(t&&e.startsWith(t)){return e.slice(t.length)}return e}var i={__esModule:true};i.createFieldMappingWithSimplifiedKeys=e;return i});
+//# sourceMappingURL=fieldMapping.js.map

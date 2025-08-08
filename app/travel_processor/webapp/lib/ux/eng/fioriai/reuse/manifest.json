@@ -1,0 +1,143 @@
+{
+    "$schema": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json",
+    "_version": "1.69.0",
+    "sap.app": {
+        "id": "ux.eng.fioriai.reuse",
+        "type": "library",
+        "title": "{{TITLE}}",
+        "description": "{{DESCRIPTION}}",
+        "applicationVersion": {
+            "version": "${project.version}"
+        },
+        "dataSources": {
+            "service": {
+                "uri": "/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "ach": "BC-SRV-APS-AI-UIS",
+        "resources": "resources.json",
+        "i18n": {
+            "bundleUrl": "messagebundle.properties",
+            "supportedLocales": [
+                "ar",
+                "bg",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en",
+                "es",
+                "fi",
+                "fr",
+                "hr",
+                "hu",
+                "it",
+                "iw",
+                "ja",
+                "kk",
+                "ko",
+                "ms",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "ro",
+                "ru",
+                "sh",
+                "sk",
+                "sl",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "zh_CN",
+                "zh_TW",
+                ""
+            ],
+            "fallbackLocale": ""
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "${sap.ui5.dist.version}",
+            "libs": {
+                "ux.eng.fioriai.reuse": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.richtexteditor": { "lazy": true },
+                "sap.suite.ui.commons": { "lazy": true }
+            }
+        },
+        "library": {
+            "i18n": {
+                "bundleUrl": "messagebundle.properties",
+                "supportedLocales": [
+                    "ar",
+                    "bg",
+                    "cs",
+                    "da",
+                    "de",
+                    "el",
+                    "en",
+                    "es",
+                    "fi",
+                    "fr",
+                    "hr",
+                    "hu",
+                    "it",
+                    "iw",
+                    "ja",
+                    "kk",
+                    "ko",
+                    "ms",
+                    "nl",
+                    "no",
+                    "pl",
+                    "pt",
+                    "ro",
+                    "ru",
+                    "sh",
+                    "sk",
+                    "sl",
+                    "sv",
+                    "th",
+                    "tr",
+                    "uk",
+                    "zh_CN",
+                    "zh_TW",
+                    ""
+                ],
+                "fallbackLocale": ""
+            },
+            "css": true,
+            "content": {
+                "controls": [],
+                "elements": [],
+                "types": [],
+                "interfaces": []
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "flexEnabled": false
+    },
+    "sap.fiori": {
+        "registrationIds": ["F7924", "F8552", "F8553", "F8820"],
+        "archeType": "reusecomponent",
+        "abstract": true
+    }
+}
