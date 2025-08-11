@@ -17,12 +17,6 @@
       "csrfProtection": false
     },
     {
-      "source": "^(/[^/]+)?/resources/sap/fe/core/services/EnvironmentServiceFactory(.*)$",
-      "target": "$1/resources/sap/fe/core/services/EnvironmentServiceFactory$2",
-      "service": "html5-apps-repo-rt",
-      "authenticationType": "xsuaa"
-    },
-    {
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
