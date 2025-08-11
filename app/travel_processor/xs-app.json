@@ -12,7 +12,7 @@
     {
       "source": "^(/[^/]+)?/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/(.*)$",
       "target": "$1/sap/opu/odata4/sap/aiu_ui_prompt/srvd/sap/aiu_ui_prompt/0001/$2",
-      "destination": "fioriai-proxy-srv",
+      "destination": "sflight-srv",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

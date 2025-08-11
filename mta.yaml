@@ -184,9 +184,3 @@ resources:
                 ProxyType: Internet
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
-              - Name: fioriai-proxy-srv
-                URL: https://cnssandbox-ux-fnd-ai-playground-fioriai-fioriai-proxy-srv.cfapps.eu12.hana.ondemand.com
-                Authentication: NoAuthentication
-                Type: HTTP
-                ProxyType: Internet
-                HTML5.ForwardAuthToken: true

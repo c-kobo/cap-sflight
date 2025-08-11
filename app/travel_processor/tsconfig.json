@@ -26,7 +26,6 @@
         "./webapp/**/*"
     ],
     "exclude": [
-        "./webapp/lib/**/*",
-        "./webapp/resources/sap/fe/core/**/*"
+        "./webapp/lib/**/*"
     ] 
 }
