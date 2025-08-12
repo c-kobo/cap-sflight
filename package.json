@@ -20,8 +20,8 @@
     "fetch:fioriaireuselib": "mvn-install"
   },
   "dependencies": {
-    "@cap-js/hana": ">=1",
-    "@sap/cds": ">=8.4.0",
+    "@cap-js/hana": ">=2",
+    "@sap/cds": ">=9.1",
     "@sap/xssec": "^4",
     "@sap-ai-sdk/orchestration": "^1.13.0",
     "@sap-ai-sdk/prompt-registry": "^1.15.0",    
@@ -38,6 +38,11 @@
     "@types/jest": "^29.5.13",
     "cds-plugin-ui5": "^0.12.0",
     "concurrently": "^9.1.2",
+    "@cap-js/sqlite": ">=2",
+    "@sap/cds-dk" : ">=9.1",
+    "@sap/ux-specification": "UI5-1.128",
+    "@types/jest": "^29.5.13",
+    "cds-plugin-ui5": "^0.13.1",
     "cross-spawn": "^7.0.3",
     "eslint": "^9",
     "http-proxy": "^1.18.1",
@@ -54,9 +59,6 @@
     }
   },
   "cds": {
-    "cdsc": {
-      "newParser": true
-    },
     "requires": {
       "db": {
         "kind": "sql"
@@ -133,9 +135,6 @@
           }
         ]
       }
-    },
-    "sql": {
-      "native_hana_associations": false
     },
     "typer": {
       "output_directory": "@cds-models",
