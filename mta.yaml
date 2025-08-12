@@ -14,6 +14,7 @@ build-parameters:
         # set 'CDS_ENV=node' to pick the 'node' build profile settings, defined in package.json
         - npm ci
         - npx -p @sap/cds-dk cds build --profile production,node
+        # fetch the reuse library, if not already available -> not active yet, csrfToken handling needs to be manually patched in the lib as of now
         #- npm run fetch:fioriaireuselib
 
 modules:
