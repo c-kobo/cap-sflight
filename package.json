@@ -16,7 +16,7 @@
     "test:mocha": "npx -y mocha",
     "travel-processor": "cds watch --open sap.fe.cap.travel/index.html?sap-ui-xx-viewCache=false",
     "travel-analytics": "cds watch --open sap.fe.cap.travel_analytics/index.html?sap-ui-xx-viewCache=false",
-    "travel-serve": "concurrently --names \"CAP,UI5\" --prefix name \"cds bind -2 aicore && cds-tsx watch --profile hybrid\" \"cd app/travel_processor && npx ui5 serve\"",
+    "travel-serve": "concurrently --names \"CAP,UI5\" --prefix name \"cds bind -2 aicore && cds-tsx watch --profile hybrid\" \"cd app/travel_processor && npx ui5 serve --open test/flpSandbox.html\"",
     "fetch:fioriaireuselib": "mvn-install"
   },
   "dependencies": {
@@ -24,25 +24,20 @@
     "@sap/cds": ">=9.1",
     "@sap/xssec": "^4",
     "@sap-ai-sdk/orchestration": "^1.13.0",
-    "@sap-ai-sdk/prompt-registry": "^1.15.0",    
+    "@sap-ai-sdk/prompt-registry": "^1.15.0",
     "express": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-test": "^0",
     "@cap-js/cds-typer": "^0.35.0",
     "@cap-js/cds-types": "^0",
-    "@cap-js/sqlite": ">=1",
-    "@sap/cds-dk": ">=8.9.0",
+    "@cap-js/sqlite": ">=2",
+    "@sap/cds-dk": ">=9.1",
     "@sap/npm-maven-adapter": "^0.2.2",
     "@sap/ux-specification": "UI5-1.128",
     "@types/jest": "^29.5.13",
-    "cds-plugin-ui5": "^0.12.0",
-    "concurrently": "^9.1.2",
-    "@cap-js/sqlite": ">=2",
-    "@sap/cds-dk" : ">=9.1",
-    "@sap/ux-specification": "UI5-1.128",
-    "@types/jest": "^29.5.13",
     "cds-plugin-ui5": "^0.13.1",
+    "concurrently": "^9.1.2",
     "cross-spawn": "^7.0.3",
     "eslint": "^9",
     "http-proxy": "^1.18.1",
@@ -51,12 +46,6 @@
     "ts-jest": "^29.2.5",
     "tsx": "^4.19.2",
     "typescript-eslint": "^8.12.2"
-  },
-  "maven": {
-    "repositoryURL": "https://int.repositories.cloud.sap/artifactory/build-snapshots/",
-    "dependencies": {
-      "com.sap.fiori:ux.eng.fioriai.reuse:2511.0.0-SNAPSHOT:zip:static-abap": "./app/travel_processor/webapp/lib/ux/eng/fioriai/reuse"
-    }
   },
   "cds": {
     "requires": {
