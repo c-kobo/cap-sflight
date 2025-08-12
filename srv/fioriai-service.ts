@@ -1,4 +1,5 @@
 import cds from '@sap/cds'
+import ISO6391 from 'iso-639-1';
 let OrchestrationClient;
 let PromptTemplatesApi;
 (async () => {
@@ -15,9 +16,11 @@ module.exports = class extends cds.ApplicationService {
       const { content, languageCode } = req.data || {};
       if (!content || !languageCode) {
         return req.error(400, "Invalid request");
-      }
-
-      // check for template in prompt registry
+      }      
+      // validate language code
+      if (!ISO6391.validate(languageCode)) {
+        return req.error(400, `Invalid language code: ${languageCode}. Please use a valid ISO 639-1 language code.`);
+      }// check for template in prompt registry
       const templates = await PromptTemplatesApi.listPromptTemplates({
         scenario: scenarioId,
       }).execute();
