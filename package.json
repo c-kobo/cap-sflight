@@ -48,6 +48,12 @@
     "tsx": "^4.19.2",
     "typescript-eslint": "^8.12.2"
   },
+  "maven": {
+    "repositoryURL": "https://int.repositories.cloud.sap/artifactory/build-snapshots/",
+    "dependencies": {
+      "com.sap.fiori:ux.eng.fioriai.reuse:2511.0.0-SNAPSHOT:zip:static-abap": "./app/travel_processor/webapp/lib/ux/eng/fioriai/reuse"
+    }
+  },
   "cds": {
     "requires": {
       "db": {
