@@ -14,6 +14,8 @@ build-parameters:
         # set 'CDS_ENV=node' to pick the 'node' build profile settings, defined in package.json
         - npm ci
         - npx -p @sap/cds-dk cds build --profile production,node
+        # fetch the reuse library, if not already available -> not active yet, csrfToken handling needs to be manually patched in the lib as of now
+        #- npm run fetch:fioriaireuselib
 
 modules:
   # --------------------- SERVER MODULE ------------------------
@@ -23,6 +25,8 @@ modules:
     path: gen/srv
     requires:
       - name: sflight-db
+      - name: aicore     
+      - name: cap-aicore-dest            
       - name: sflight-uaa
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter, destinations)
@@ -62,28 +66,12 @@ modules:
           artifacts:
             - travel-processor.zip
           target-path: app/
-        - name: sflight-app-travel-analytics
-          artifacts:
-            - travel-analytics.zip
-          target-path: app/
 
   # ------------- APPLICATION: TRAVEL PROCESSOR ----------------
   - name: sflight-app-travel-processor
   # ------------------------------------------------------------
     type: html5
     path: app/travel_processor
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm run build
-      supported-platforms: []
-
-  # ------------- APPLICATION: TRAVEL ANALYTICS ----------------
-  - name: sflight-app-travel-analytics
-  # ------------------------------------------------------------
-    type: html5
-    path: app/travel_analytics
     build-parameters:
       build-result: dist
       builder: custom
@@ -200,3 +188,31 @@ resources:
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
 
+  - name: aicore
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: aicore
+      service-plan: sap-internal
+      
+  - name: cap-aicore-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        init_data:
+          instance:
+            existing_destinations_policy: ignore
+            destinations:
+              - Name: openai-aicore-api
+                Description: SAP AI Core deployed service
+                URL: https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com
+                URL.headers.AI-Resource-Group: default # your resource group
+                URL.headers.Content-Type: application/json
+                Type: HTTP
+                ProxyType: Internet
+                Authentication: OAuth2ClientCredentials
+                tokenServiceURL: https://ux-fnd-ai-playground.authentication.eu12.hana.ondemand.com/oauth/token # your token service url of the SAP AI Core instance
+                clientId: DUMMY_ID # enter in cockpit
+                clientSecret: DUMMY_SECRET # enter in cockpit
+                HTML5.DynamicDestination: true                  
