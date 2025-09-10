@@ -26,7 +26,8 @@
     "@sap/cds": ">=9.1",
     "@sap/xssec": "^4",
     "express": "^4",
-    "iso-639-1": "^3.1.3"
+    "iso-639-1": "^3.1.3",
+    "reuseplugin": "*"
   },
   "devDependencies": {
     "@cap-js/cds-test": "^0",
@@ -51,7 +52,7 @@
   "maven": {
     "repositoryURL": "https://int.repositories.cloud.sap/artifactory/build-snapshots/",
     "dependencies": {
-      "com.sap.fiori:ux.eng.fioriai.reuse:2511.0.0-SNAPSHOT:zip:static-abap": "./app/travel_processor/webapp/lib/ux/eng/fioriai/reuse"
+      "com.sap.fiori:ux.eng.fioriai.reuse:2602.0.0-SNAPSHOT:zip:static-abap": "./app/travel_processor/webapp/lib/ux/eng/fioriai/reuse"
     }
   },
   "cds": {
@@ -156,7 +157,8 @@
     "app/travel_analytics"
   ],
   "workspaces": [
-    "app/*"
+    "app/*",
+    "reuseplugin"
   ],
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
