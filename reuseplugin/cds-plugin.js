@@ -1,76 +1,114 @@
 const cds = require("@sap/cds");
 const path = require("path");
+const fs = require("fs");
+const { OrchestrationClient } = require("@sap-ai-sdk/orchestration");
+const { PromptTemplatesApi } = require("@sap-ai-sdk/prompt-registry");
 
-module.exports = async () => {
-    // Load both schema and service model from plugin folder
-    const schemaPath = path.join(__dirname, "db", "schema.cds");
-    const servicePath = path.join(__dirname, "fioriaiservice.cds");
-    const model = await cds.load([schemaPath, servicePath]);
-    cds.model = model;
+console.log('Fiori AI Plugin loading...');
 
-	// Register handler for the summarize action on the v0001 service
-	const { OrchestrationClient } = await import("@sap-ai-sdk/orchestration");
-	const { PromptTemplatesApi } = await import("@sap-ai-sdk/prompt-registry");
-	const scenarioId = "AIU_SUMMARIZATION";
+const scenarioId = "AIU_SUMMARIZATION";
 
-	cds.on("serving", (service) => {
-		if (service.name === "com.sap.gateway.srvd.aiu_ui_prompt.v0001") {
-			service.on("summarize", async (req) => {
-				const { content, languageCode } = req.data || {};
-				if (!content || !languageCode) {
-					return req.error(400, "Invalid request");
-				}
+// Register CDS model extension
+cds.on('loaded', (model) => {
+    try {
+        const schemaFilePath = path.join(__dirname, 'db', 'schema.cds');
+        const serviceFilePath = path.join(__dirname, 'fioriaiservice.cds');
+        
+        // Load schema and service definitions
+        if (fs.existsSync(schemaFilePath)) {
+            const schemaContent = fs.readFileSync(schemaFilePath, 'utf8');
+            const parsedSchema = cds.parse(schemaContent, schemaFilePath);
+            model.definitions = { ...model.definitions, ...parsedSchema.definitions };
+        }
+        
+        if (fs.existsSync(serviceFilePath)) {
+            const serviceContent = fs.readFileSync(serviceFilePath, 'utf8');
+            const parsedService = cds.parse(serviceContent, serviceFilePath);
+            model.definitions = { ...model.definitions, ...parsedService.definitions };
+        }
+        
+    } catch (error) {
+        console.error('Error loading Fiori AI plugin CDS files:', error);
+    }
+});
 
-				// check for template in prompt registry
-				const templates = await PromptTemplatesApi.listPromptTemplates({
-					scenario: scenarioId,
-				}).execute();
+cds.on('served', () => {
+    const service = cds.services['com.sap.gateway.srvd.aiu_ui_prompt.v0001'];
+    if (!service) {
+        console.error('Fiori AI service not found');
+        return;
+    }
 
-				if (!templates || templates.count === 0) {
-					return req.error(404, `No prompt templates found.`);
-				}
+    // Summarization odata handler
+    service.on('summarize', 'Summarization', async (req) => {
+        try {
+            const { content, languageCode } = req.data || {};
+            
+            if (!content || !languageCode) {
+                req.error(400, "Content and languageCode are required");
+                return;
+            }
 
-				//sort templates by version (should be done by the API, but just in case)
-				templates.resources.sort((a, b) => {
-					const versionA = a.version.split('.').map(Number);
-					const versionB = b.version.split('.').map(Number);
-					for (let i = 0; i < Math.max(versionA.length, versionB.length); i++) {
-						const a = versionA[i] || 0;
-						const b = versionB[i] || 0;
-						if (b !== a) return b - a;
-					}
-					return 0;
-				});
+            // Get prompt templates
+            const templates = await PromptTemplatesApi.listPromptTemplates({
+                scenario: scenarioId,
+            }).execute();
 
-				const orchestrationClient = new OrchestrationClient({
-					llm: {
-						model_name: "gpt-4o",
-						model_version: '2024-08-06',
-						model_params: {
-							max_tokens: 4096,
-							temperature: 0.0,
-							frequency_penalty: 0.1,
-							presence_penalty: 0.1
-						}
-					},
-					templating: {
-						template_ref: {
-							name: templates.resources[0].name,
-							scenario: scenarioId,
-							version: templates.resources[0].version,
-						},
-					},
-				});
+            if (!templates || templates.count === 0) {
+                req.error(404, `No prompt templates found for scenario: ${scenarioId}`);
+                return;
+            }
 
-				const response = await orchestrationClient.chatCompletion({
-					inputParams: {
-						summarizeData: content,
-						languageCode: languageCode,
-					},
-				});
+            // Sort templates by version and use the latest
+            templates.resources.sort((a, b) => {
+                const versionA = a.version.split('.').map(Number);
+                const versionB = b.version.split('.').map(Number);
+                for (let i = 0; i < Math.max(versionA.length, versionB.length); i++) {
+                    const a = versionA[i] || 0;
+                    const b = versionB[i] || 0;
+                    if (b !== a) return b - a;
+                }
+                return 0;
+            });
 
-				return response.getContent();
-			});
-		}
-	});
-};
+            const latestTemplate = templates.resources[0];
+
+            // Initialize orchestration client
+            const orchestrationClient = new OrchestrationClient({
+                llm: {
+                    model_name: "gpt-4o",
+                    model_version: '2024-08-06',
+                    model_params: {
+                        max_tokens: 4096,
+                        temperature: 0.0,
+                        frequency_penalty: 0.1,
+                        presence_penalty: 0.1
+                    }
+                },
+                templating: {
+                    template_ref: {
+                        name: latestTemplate.name,
+                        scenario: scenarioId,
+                        version: latestTemplate.version,
+                    },
+                },
+            });
+
+            // Call AI summarization
+            const response = await orchestrationClient.chatCompletion({
+                inputParams: {
+                    summarizeData: content,
+                    languageCode: languageCode,
+                },
+            });
+
+            return response.getContent();
+            
+        } catch (error) {
+            console.error('Error in summarization:', error);
+            req.error(500, `Error processing summarization: ${error.message}`);
+        }
+    });
+    
+    console.log('Fiori AI Plugin initialized successfully');
+});
