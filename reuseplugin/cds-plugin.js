@@ -11,15 +11,7 @@ const scenarioId = "AIU_SUMMARIZATION";
 // Register CDS model extension
 cds.on('loaded', (model) => {
     try {
-        const schemaFilePath = path.join(__dirname, 'db', 'schema.cds');
         const serviceFilePath = path.join(__dirname, 'fioriaiservice.cds');
-        
-        // Load schema and service definitions
-        if (fs.existsSync(schemaFilePath)) {
-            const schemaContent = fs.readFileSync(schemaFilePath, 'utf8');
-            const parsedSchema = cds.parse(schemaContent, schemaFilePath);
-            model.definitions = { ...model.definitions, ...parsedSchema.definitions };
-        }
         
         if (fs.existsSync(serviceFilePath)) {
             const serviceContent = fs.readFileSync(serviceFilePath, 'utf8');
