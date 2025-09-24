@@ -1,0 +1,22 @@
+{
+  "name": "reuseplugin",
+  "version": "1.0.0",
+  "description": "Self-contained CAP plugin for Fiori AI feature handlers",
+  "main": "cds-plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["cds-plugin", "fiori", "ai", "cap"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap-ai-sdk/orchestration": "^1.13.0",
+    "@sap-ai-sdk/prompt-registry": "^1.15.0",
+    "iso-639-1": "^3.1.3",
+    "express": "^4.18.0",
+    "http-proxy-middleware": "^2.0.0"
+  },
+  "cds": {
+    "plugin": "true"
+  }
+}
