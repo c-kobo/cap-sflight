@@ -23,15 +23,15 @@
     "@cap-js/hana": ">=2",
     "@sap/cds": ">=9.1",
     "@sap/xssec": "^4",
-    "express": "^4",
-    "reuseplugin": "*"
+    "@ux-ai/cap-reuse": "^0.0.1-alpha-20251013141535",
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-test": "^0",
     "@cap-js/cds-typer": "^0.35.0",
     "@cap-js/cds-types": "^0",
     "@cap-js/sqlite": ">=2",
-    "@sap/cds-dk" : ">=9.1",
+    "@sap/cds-dk": ">=9.1",
     "@sap/ux-specification": "UI5-1.128",
     "@types/jest": "^29.5.13",
     "cds-plugin-ui5": "^0.13.1",
@@ -153,8 +153,7 @@
     "app/travel_analytics"
   ],
   "workspaces": [
-    "app/*",
-    "reuseplugin"
+    "app/*"
   ],
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
