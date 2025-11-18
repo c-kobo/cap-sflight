@@ -29,8 +29,7 @@ modules:
         properties:
           srv-url: ${default-url}
     build-parameters:
-      builder: npm-ci
-      ignore: ["node_modules/"]
+      builder: npm
 
   # -------------------- SIDECAR MODULE ------------------------
   - name: sflight-db-deployer
