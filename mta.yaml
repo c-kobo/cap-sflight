@@ -24,13 +24,14 @@ modules:
     requires:
       - name: sflight-db
       - name: sflight-uaa
+      - name: aicore
+      - name: cap-aicore-dest
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter, destinations)
         properties:
           srv-url: ${default-url}
     build-parameters:
-      builder: npm-ci
-      ignore: ["node_modules/"]
+      builder: npm
 
   # -------------------- SIDECAR MODULE ------------------------
   - name: sflight-db-deployer
@@ -199,4 +200,32 @@ resources:
                 ProxyType: Internet
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
+  - name: aicore
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: aicore
+      service-plan: sap-internal
+
+  - name: cap-aicore-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        init_data:
+          instance:
+            existing_destinations_policy: ignore
+            destinations:
+              - Name: openai-aicore-api
+                Description: SAP AI Core deployed service
+                URL: https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com
+                URL.headers.AI-Resource-Group: default # your resource group
+                URL.headers.Content-Type: application/json
+                Type: HTTP
+                ProxyType: Internet
+                Authentication: OAuth2ClientCredentials
+                tokenServiceURL: https://ux-fnd-ai-playground.authentication.eu12.hana.ondemand.com/oauth/token # your token service url of the SAP AI Core instance
+                clientId: DUMMY_ID # enter in cockpit
+                clientSecret: DUMMY_SECRET # enter in cockpit
+                HTML5.DynamicDestination: true    
 
